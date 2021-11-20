@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import  { useState } from 'react';
 import shortid from 'shortid';
 import Container from 'components/Container';
 import Section from 'components/Section';
@@ -6,6 +7,12 @@ import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import './App.css';
+
+// function App() {
+//   const [contacts, setContacts] = useState([]);
+//     const [filter, setFilter] = useState('');
+
+// }
 
 class App extends Component {
   state = {
