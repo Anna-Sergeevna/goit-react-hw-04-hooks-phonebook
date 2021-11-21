@@ -50,7 +50,7 @@ function App() {
   };
 
   return (
-    <Container title='Телефонная книга'>
+    <Container title=''>
       <Section title='Phonebook'>
         <ContactForm onSubmit={addContact} />
       </Section>
