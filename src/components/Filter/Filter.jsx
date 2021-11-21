@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './Filter.module.css';
 
-const Filter = ({ value, onChange }) => (
+function Filter({ value, onChange }) {
   <label>
     <p className={s.text}>Find contacts by name</p>
     <input
@@ -13,8 +13,8 @@ const Filter = ({ value, onChange }) => (
       value={value}
       onChange={onChange}
     />
-  </label>
-);
+  </label>;
+}
 
 Filter.propTypes = {
   value: PropTypes.string.isRequired,
