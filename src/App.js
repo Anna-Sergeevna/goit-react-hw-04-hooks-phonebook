@@ -3,7 +3,7 @@ import shortid from 'shortid';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import ContactForm from 'components/ContactForm';
-// import Filter from 'components/Filter';
+import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import './App.css';
 
@@ -11,7 +11,7 @@ function App() {
   const [contacts, setContacts] = useState(
     () => JSON.parse(window.localStorage.getItem('contacts')) ?? [],
   );
-  // const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState('');
 
   // useEffect(() => {
   //   setContacts(JSON.parse(window.localStorage.getItem('contacts')) ?? []);
@@ -33,9 +33,21 @@ function App() {
       : setContacts(prevState => [contact, ...prevState]);
   };
 
-  // const changeFilter = e => {
-  //   setFilter(e.currentTarget.value);
-  // };
+  const changeFilter = e => {
+    setFilter(e.currentTarget.value);
+  };
+
+  const getVisibleContacts = () => {
+    const normalizeFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizeFilter),
+    );
+  };
+
+  const deleteContact = contactId => {
+    setContacts(contacts.filter(contact => contact.id !== contactId));
+  };
 
   return (
     <Container title='Телефонная книга'>
@@ -43,10 +55,10 @@ function App() {
         <ContactForm onSubmit={addContact} />
       </Section>
       <Section title='Contacts'>
-        {/* <Filter value={filter} onChange={changeFilter} /> */}
+        <Filter value={filter} onChange={changeFilter} />
         <ContactList
-        // contacts={visibleContacts}
-        // onDeleteContact={onDeleteContact}
+          contacts={getVisibleContacts()}
+          onDeleteContact={deleteContact}
         />
       </Section>
     </Container>
