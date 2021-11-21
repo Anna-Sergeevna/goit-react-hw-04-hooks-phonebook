@@ -33,8 +33,8 @@ function App() {
       : setContacts(prevState => [contact, ...prevState]);
   };
 
-  const changeFilter = ({ currentTarget }) => {
-    setFilter({ filter: currentTarget.value });
+  const changeFilter = e => {
+    setFilter(e.currentTarget.value);
   };
 
   const getVisibleContacts = () => {
